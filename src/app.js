@@ -167,4 +167,4 @@ function getCurrentLocation() {
 let hereButton = document.querySelector("#here-button");
 hereButton.addEventListener("click", getCurrentLocation);
 
-search("Tokyo");
+search("New York");
