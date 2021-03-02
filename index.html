@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App ☀️ | Alex Blanc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <form action="" id="search-form">
+        <input type="search" placeholder="Search city ..." autocomplete="off" id="city-input">
+        <i class="fa fa-search"></i>
+    </form>
+    <button id="here-button">Get Current Location</button>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm" id="current">
+                <span id="current-text">Current Forecast</span>
+            </div>
+            <div class="col-sm" id="hourly">
+                <span id="n5d-text">Hourly Forecast</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div class="background">
+        <div id="city-name">
+        </div>
+        <div id="current-temperature">
+            <span id="current-temp"></span><span id="units"><a href="#" class="active" id="unit-c"> °C </a> | <a
+                    href="#" id="unit-f">°F</a></span>
+        </div>
+        <div id="current-condition">
+            <img src="" alt="Clear" id="cc-icon"><span id="cc-text"></span>
+        </div>
+        <div id="today-date">Last updated: <span id="date"></span></div>
+    </div>
+    <div class="container" id="forecast-container">
+        <div class="row">
+            <div class="hour col-sm" id="hour1Time">
+                <span id="hour1-time"></span>
+            </div>
+            <div class="col-sm" id="hour1Icon">
+                <img src="" alt="Clear" id="hour1-icon" class="icon"> <span id="hour1-description"
+                    class="description"></span>
+            </div>
+            <div class="forecast-temp col-sm" id="hour1Temp">
+                <span id="hour1-temp"></span>°C
+            </div>
+        </div>
+        <div class="row">
+            <div class="hour col-sm" id="hour2Time">
+                <span id="hour2-time"></span>
+            </div>
+            <div class="col-sm" id="hour2Icon">
+                <img src="" alt="Clear" id="hour2-icon" class="icon"> <span id="hour2-description"
+                    class="description"></span>
+            </div>
+            <div class="forecast-temp col-sm" id="hour2Temp">
+                <span id="hour2-temp"></span>°C
+            </div>
+        </div>
+        <div class="row">
+            <div class="hour col-sm" id="hour3Time">
+                <span id="hour3-time"></span>
+            </div>
+            <div class="col-sm" id="hour3Icon">
+                <img src="" alt="Clear" id="hour3-icon" class="icon"> <span id="hour3-description"
+                    class="description"></span>
+            </div>
+            <div class="forecast-temp col-sm" id="hour3Temp">
+                <span id="hour3-temp"></span>°C
+            </div>
+        </div>
+        <div class="row">
+            <div class="hour col-sm" id="hour4Time">
+                <span id="hour4-time"></span>
+            </div>
+            <div class="col-sm" id="hour4Icon">
+                <img src="" alt="Clear" id="hour4-icon" class="icon"> <span id="hour4-description"
+                    class="description"></span>
+            </div>
+            <div class="forecast-temp col-sm" id="hour4Temp">
+                <span id="hour4-temp"></span>°C
+            </div>
+        </div>
+        <div class="row">
+            <div class="hour col-sm" id="hour5Time">
+                <span id="hour5-time"></span>
+            </div>
+            <div class="col-sm" id="hour5Icon">
+                <img src="" alt="Clear" id="hour5-icon" class="icon"> <span id="hour5-description"
+                    class="description"></span>
+            </div>
+            <div class="forecast-temp col-sm" id="hour5Temp">
+                <span id="hour5-temp"></span>°C
+            </div>
+        </div>
+    </div>
+    <div id="details-container">
+        <div id="details">
+            Details
+        </div>
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-sm" id="feels-like">
+                    <div id="feels-card">
+                        <hr id="fc-line" />
+                        <img src="src/icons8-thermometer-64.png" id="feels-img" class="icons" /><span class="card-title"
+                            id="fc-title">Feels Like</span>
+                        <span class="card-data" id="feels-data"></span>
+                    </div>
+                </div>
+                <div class="col-sm" id="min-max">
+                    <div id="minmax-card">
+                        <hr id="mmc-line" />
+                        <img src="src/icons8-thermometer minmax-64 copy.png" id="minmax-img" class="icons" /><span
+                            class="card-title" id="mmc-title">Min|Max</span>
+                        <span class="card-data" id="minmax-data"><span id="min-data"></span>° | <span
+                                id="max-data"></span>°</span>
+                    </div>
+                </div>
+                <div class="col-sm" id="humidity">
+                    <div id="humidity-card">
+                        <hr id="hc-line" />
+                        <img src="src/icons8-rain-64 copy.png" id="humidity-img" class="icons" /><span
+                            class="card-title" id="hc-title">Humidity</span>
+                        <span class="card-data" id="humidity-data"></span>
+                    </div>
+                </div>
+                <div class="col-sm" id="wind">
+                    <div id="wind-card">
+                        <hr id="wc-line" />
+                        <img src="src/icons8-wind-64 copy.png" id="wind-img" class="icons" /><span class="card-title"
+                            id="wc-title">Wind</span>
+                        <span class="card-data" id="wind-data"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <div id="coded-by">
+            <a href="https://github.com/alexblanc14/WeatherApp2.0" target="_blank" id="coded">Open-source code</a> by
+            Alex Blanc
+        </div>
+    </div>
+    <script src="src/app.js"></script>
+</body>
+
+</html>
